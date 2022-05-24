@@ -1,4 +1,3 @@
-import 'package:carousel_slider/carousel_options.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -6,32 +5,29 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:sizer/sizer.dart';
-import 'package:youtap_movie/app/modules/movie/controllers/movie_controller.dart';
+import 'package:youtap_movie/app/modules/home/views/widget/refresh_widget.dart';
 import 'package:youtap_movie/app/modules/shared/colors.dart';
 import 'package:youtap_movie/app/modules/shared/fonts.dart';
 import 'package:youtap_movie/app/modules/shared/widget/large_poster_card.dart';
 import 'package:youtap_movie/app/modules/shared/widget/medium_poster_card.dart';
+import 'package:youtap_movie/app/modules/tv/controllers/tv_controller.dart';
 
-import '../controllers/home_controller.dart';
-import 'widget/refresh_widget.dart';
-
-class HomeView extends StatefulWidget {
-  const HomeView({Key? key}) : super(key: key);
+class TvView extends StatefulWidget {
+  const TvView({Key? key}) : super(key: key);
 
   @override
-  State<HomeView> createState() => _HomeViewState();
+  State<TvView> createState() => _TvViewState();
 }
 
-class _HomeViewState extends State<HomeView> {
-  MovieController movieController = Get.put(MovieController());
+class _TvViewState extends State<TvView> {
+  TvController tvController = Get.put(TvController());
   TextEditingController tSearch = TextEditingController();
 
   @override
   void initState() {
     super.initState();
-    movieController.fetchNowPlaying();
-    movieController.fetchPopular();
-    movieController.fetchUpcoming();
+    tvController.fetchOnAir();
+    tvController.fetchPopular();
   }
 
   Future refresh() async {
@@ -85,21 +81,21 @@ class _HomeViewState extends State<HomeView> {
                           child: Text('Now Playing', style: whiteTextFont.copyWith(fontSize: Get.height * 0.024, fontWeight: FontWeight.w500)),
                         ),
                         Obx(() {
-                          return !movieController.isLoading.value
+                          return !tvController.isLoading.value
                               ? Container(
                                   height: Get.height * 0.4,
                                   child: ListView.builder(
-                                      itemCount: movieController.listNowPlaying.length,
+                                      itemCount: tvController.listTvOnAIr.length,
                                       scrollDirection: Axis.horizontal,
                                       itemBuilder: (ctx, index) {
                                         return Container(
                                           width: Get.width * 0.5,
-                                          margin: EdgeInsets.only(left: (index == 0) ? 24 : 0, right: (index == movieController.listNowPlaying.length - 1) ? 20 : 16),
+                                          margin: EdgeInsets.only(left: (index == 0) ? 24 : 0, right: (index == tvController.listTvOnAIr.length - 1) ? 20 : 16),
                                           child: LargePosterCard(
-                                            movieController.listNowPlaying[index].posterPath!,
+                                            tvController.listTvOnAIr[index].posterPath!,
                                             onTap: () {
-                                              movieController.fetchDetailMovie(movieController.listNowPlaying[index].id.toString(), isNowPlaying: true);
-                                              print(movieController.listNowPlaying[index].id);
+                                              tvController.fetchDetailTv(tvController.listTvOnAIr[index].id.toString(), isNowPlaying: true);
+                                              print(tvController.listTvOnAIr[index].id);
                                             },
                                           ),
                                         );
@@ -152,14 +148,14 @@ class _HomeViewState extends State<HomeView> {
                           child: Text('Popular', style: whiteTextFont.copyWith(fontSize: Get.height * 0.024, fontWeight: FontWeight.w500)),
                         ),
                         Obx(() {
-                          return !movieController.isLoading.value
+                          return !tvController.isLoading.value
                               ? Container(
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(18),
                                   ),
                                   height: 26.h,
                                   child: ListView.builder(
-                                      itemCount: movieController.listPopular.length,
+                                      itemCount: tvController.listTvPopular.length,
                                       scrollDirection: Axis.horizontal,
                                       itemBuilder: (ctx, index) {
                                         return Container(
@@ -167,79 +163,14 @@ class _HomeViewState extends State<HomeView> {
                                             borderRadius: BorderRadius.circular(18),
                                           ),
                                           width: 50.w,
-                                          margin: EdgeInsets.only(left: (index == 0) ? 24 : 0, right: (index == movieController.listPopular.length - 1) ? 20 : 16),
+                                          margin: EdgeInsets.only(left: (index == 0) ? 24 : 0, right: (index == tvController.listTvPopular.length - 1) ? 20 : 16),
                                           child: MediumPosterCard(
-                                            title: movieController.listPopular[index].title,
-                                            poster: movieController.listPopular[index].backdropPath,
-                                            vote: movieController.listPopular[index].voteAverage.toString(),
-                                            onTap: () {},
-                                          ),
-                                        );
-                                      }),
-                                )
-                              : Shimmer.fromColors(
-                                  child: CarouselSlider.builder(
-                                    itemCount: 3,
-                                    itemBuilder: (context, index, relIdx) {
-                                      return Container(
-                                        margin: EdgeInsets.only(left: (index == 0) ? 0 : 0, right: (index == 3 - 1) ? 20 : 16),
-                                        child: Container(
-                                          decoration: BoxDecoration(color: Colors.white10, borderRadius: BorderRadius.all(Radius.circular(8))),
-                                          height: Get.height * 0.3,
-                                          width: Get.width * 0.2,
-                                        ),
-                                      );
-                                    },
-                                    options: CarouselOptions(
-                                      height: Get.height * 0.4,
-                                      enableInfiniteScroll: false,
-                                      viewportFraction: 0.60,
-                                      disableCenter: true,
-                                      enlargeCenterPage: true,
-                                      initialPage: 0,
-                                      onPageChanged: (index, reason) {},
-                                      scrollDirection: Axis.horizontal,
-                                    ),
-                                  ),
-                                  baseColor: Colors.white60,
-                                  highlightColor: Colors.grey[300]!,
-                                );
-                        })
-                      ],
-                    ),
-                  ),
-                  Container(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.only(left: 6.w, bottom: 0.h),
-                          child: Text('Upcoming', style: whiteTextFont.copyWith(fontSize: Get.height * 0.024, fontWeight: FontWeight.w500)),
-                        ),
-                        Obx(() {
-                          return !movieController.isLoading.value
-                              ? Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(18),
-                                  ),
-                                  height: 26.h,
-                                  child: ListView.builder(
-                                      itemCount: movieController.listUpcoming.length,
-                                      scrollDirection: Axis.horizontal,
-                                      itemBuilder: (ctx, index) {
-                                        return Container(
-                                          decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(18),
-                                          ),
-                                          width: 50.w,
-                                          margin: EdgeInsets.only(left: (index == 0) ? 24 : 0, right: (index == movieController.listUpcoming.length - 1) ? 20 : 16),
-                                          child: MediumPosterCard(
-                                            title: movieController.listUpcoming[index].title,
-                                            vote: movieController.listUpcoming[index].voteAverage.toString(),
-                                            poster: movieController.listUpcoming[index].backdropPath,
+                                            title: tvController.listTvPopular[index].name,
+                                            poster: tvController.listTvPopular[index].backdropPath,
+                                            vote: tvController.listTvPopular[index].voteAverage.toString(),
                                             onTap: () {
-                                              movieController.fetchDetailMovie(movieController.listUpcoming[index].id.toString(), isNowPlaying: true);
-                                              print(movieController.listUpcoming[index].id);
+                                              tvController.fetchDetailTv(tvController.listTvOnAIr[index].id.toString(), isNowPlaying: true);
+                                              print(tvController.listTvOnAIr[index].id);
                                             },
                                           ),
                                         );
@@ -276,6 +207,80 @@ class _HomeViewState extends State<HomeView> {
                       ],
                     ),
                   ),
+                  // Container(
+                  //   child: Column(
+                  //     crossAxisAlignment: CrossAxisAlignment.start,
+                  //     children: [
+                  //       Padding(
+                  //         padding: EdgeInsets.only(left: 6.w, bottom: 0.h),
+                  //         child: Text('Upcoming',
+                  //             style: whiteTextFont.copyWith(fontSize: Get.height * 0.024, fontWeight: FontWeight.w500)),
+                  //       ),
+                  //       Obx(() {
+                  //         return !tvController.isLoading.value
+                  //             ? Container(
+                  //                 decoration: BoxDecoration(
+                  //                   borderRadius: BorderRadius.circular(18),
+                  //                 ),
+                  //                 height: 26.h,
+                  //                 child: ListView.builder(
+                  //                     itemCount: tvController.listUpcoming.length,
+                  //                     scrollDirection: Axis.horizontal,
+                  //                     itemBuilder: (ctx, index) {
+                  //                       return Container(
+                  //                         decoration: BoxDecoration(
+                  //                           borderRadius: BorderRadius.circular(18),
+                  //                         ),
+                  //                         width: 50.w,
+                  //                         margin: EdgeInsets.only(
+                  //                             left: (index == 0) ? 24 : 0,
+                  //                             right: (index == tvController.listUpcoming.length - 1) ? 20 : 16),
+                  //                         child: MediumPosterCard(
+                  //                           movie: tvController.listUpcoming[index],
+                  //                           onTap: () {
+                  //                             tvController.fetchDetailMovie(
+                  //                                 tvController.listUpcoming[index].id.toString(),
+                  //                                 isNowPlaying: true);
+                  //                             print(tvController.listUpcoming[index].id);
+                  //                           },
+                  //                         ),
+                  //                       );
+                  //                     }),
+                  //               )
+                  //             : Shimmer.fromColors(
+                  //                 child: CarouselSlider.builder(
+                  //                   itemCount: 3,
+                  //                   itemBuilder: (context, index, relIdx) {
+                  //                     return Container(
+                  //                       margin: EdgeInsets.only(
+                  //                           left: (index == 0) ? 0 : 0, right: (index == 3 - 1) ? 20 : 16),
+                  //                       child: Container(
+                  //                         decoration: BoxDecoration(
+                  //                             color: Colors.white10,
+                  //                             borderRadius: BorderRadius.all(Radius.circular(8))),
+                  //                         height: Get.height * 0.3,
+                  //                         width: Get.width * 0.2,
+                  //                       ),
+                  //                     );
+                  //                   },
+                  //                   options: CarouselOptions(
+                  //                     height: Get.height * 0.4,
+                  //                     enableInfiniteScroll: false,
+                  //                     viewportFraction: 0.60,
+                  //                     disableCenter: true,
+                  //                     enlargeCenterPage: true,
+                  //                     initialPage: 0,
+                  //                     onPageChanged: (index, reason) {},
+                  //                     scrollDirection: Axis.horizontal,
+                  //                   ),
+                  //                 ),
+                  //                 baseColor: Colors.white60,
+                  //                 highlightColor: Colors.grey[300]!,
+                  //               );
+                  //       })
+                  //     ],
+                  //   ),
+                  // ),
                 ],
               ),
             ],

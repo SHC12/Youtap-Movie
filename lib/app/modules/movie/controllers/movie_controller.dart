@@ -107,7 +107,7 @@ class MovieController extends GetxController {
                 print('credits response : $credit');
                 listCredits.value = CreditsMovie.fromJson(credit);
                 detailMovie.value = DetailMovie.fromJson(content);
-                reviewController.fetchReview(movieId);
+                reviewController.fetchReviewMovie(movieId);
 
                 Get.to(DetailMovieView());
               },

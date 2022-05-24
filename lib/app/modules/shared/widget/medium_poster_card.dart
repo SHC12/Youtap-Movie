@@ -4,14 +4,17 @@ import 'package:get/get.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:sizer/sizer.dart';
 import 'package:youtap_movie/app/data/movie_model.dart';
+import 'package:youtap_movie/app/data/tv_model.dart';
 import 'package:youtap_movie/app/modules/shared/fonts.dart';
 import 'package:youtap_movie/app/utils/url_list_services.dart';
 
 class MediumPosterCard extends StatelessWidget {
-  final Movie? movie;
+  final String? poster;
+  final String? vote;
+  final String? title;
 
   final Function()? onTap;
-  MediumPosterCard({this.onTap, this.movie});
+  MediumPosterCard({this.onTap, this.poster, this.vote, this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -32,11 +35,7 @@ class MediumPosterCard extends StatelessWidget {
                   Container(
                     width: 50.w,
                     height: 15.h,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
-                        image: DecorationImage(
-                            image: NetworkImage(UrlListService.baseUrlImageW500 + movie!.backdropPath!),
-                            fit: BoxFit.fill)),
+                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(8), image: DecorationImage(image: NetworkImage(UrlListService.baseUrlImageW500 + poster!), fit: BoxFit.fill)),
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 1.h),
@@ -45,7 +44,7 @@ class MediumPosterCard extends StatelessWidget {
                       children: [
                         SizedBox(
                           child: Text(
-                            movie!.title!,
+                            title!,
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
                             style: whiteTextFont.copyWith(fontSize: 14.sp, fontWeight: FontWeight.w700),
@@ -53,7 +52,7 @@ class MediumPosterCard extends StatelessWidget {
                         ),
                         Row(
                           children: [
-                            Text(movie!.voteAverage.toString(), style: whiteTextFont),
+                            Text(vote.toString(), style: whiteTextFont),
                             SizedBox(
                               width: 5,
                             ),

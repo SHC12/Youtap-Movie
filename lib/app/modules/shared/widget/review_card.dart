@@ -11,7 +11,7 @@ import 'package:youtap_movie/app/modules/shared/fonts.dart';
 import 'package:youtap_movie/app/utils/url_list_services.dart';
 
 class ReviewCard extends StatefulWidget {
-  final ReviewMovie? review;
+  final Review? review;
 
   ReviewCard(this.review);
 
@@ -58,8 +58,10 @@ class _ReviewCardState extends State<ReviewCard> {
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(8),
                         ),
+                        height: 10.h,
+                        width: 20.w,
                         child: Image.network(
-                          widget.review!.authorDetails!.avatarPath!.substring(1),
+                          widget.review!.authorDetails!.avatarPath!.contains('https') ? widget.review!.authorDetails!.avatarPath!.substring(1) : UrlListService.baseUrlImage + widget.review!.authorDetails!.avatarPath!,
                         ),
                       ),
                 SizedBox(

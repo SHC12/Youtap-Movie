@@ -7,8 +7,7 @@ import 'package:sizer/sizer.dart';
 import 'package:youtap_movie/app/modules/home/views/home_view.dart';
 import 'package:youtap_movie/app/modules/shared/colors.dart';
 import 'package:youtap_movie/app/modules/shared/fonts.dart';
-
-import '../controllers/splashscreen_controller.dart';
+import 'package:youtap_movie/app/modules/tv/views/tv_view.dart';
 
 class SplashscreenView extends StatefulWidget {
   const SplashscreenView({Key? key}) : super(key: key);
@@ -27,7 +26,7 @@ class _SplashscreenViewState extends State<SplashscreenView> {
   splashscreenStart() async {
     var duration = const Duration(seconds: 3);
     return Timer(duration, () {
-      Get.offAll(HomeView());
+      Get.offAll(TvView());
     });
   }
 
@@ -49,15 +48,12 @@ class _SplashscreenViewState extends State<SplashscreenView> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       RichText(
-                        text: TextSpan(
-                            text: 'YOUTAP ',
-                            style: whiteTextFont.copyWith(fontSize: 30.sp, fontWeight: FontWeight.bold),
-                            children: <TextSpan>[
-                              TextSpan(
-                                text: 'MOVIE',
-                                style: redTextFont.copyWith(fontSize: 30.sp, fontWeight: FontWeight.bold),
-                              )
-                            ]),
+                        text: TextSpan(text: 'YOUTAP ', style: whiteTextFont.copyWith(fontSize: 30.sp, fontWeight: FontWeight.bold), children: <TextSpan>[
+                          TextSpan(
+                            text: 'MOVIE',
+                            style: redTextFont.copyWith(fontSize: 30.sp, fontWeight: FontWeight.bold),
+                          )
+                        ]),
                       ),
                     ],
                   ),

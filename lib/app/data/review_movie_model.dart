@@ -1,4 +1,4 @@
-class ReviewMovie {
+class Review {
   String? author;
   AuthorDetails? authorDetails;
   String? content;
@@ -7,9 +7,9 @@ class ReviewMovie {
   String? updatedAt;
   String? url;
 
-  ReviewMovie({this.author, this.authorDetails, this.content, this.createdAt, this.id, this.updatedAt, this.url});
+  Review({this.author, this.authorDetails, this.content, this.createdAt, this.id, this.updatedAt, this.url});
 
-  ReviewMovie.fromJson(Map<String, dynamic> json) {
+  Review.fromJson(Map<String, dynamic> json) {
     author = json['author'];
     authorDetails = json['author_details'] != null ? new AuthorDetails.fromJson(json['author_details']) : null;
     content = json['content'];
