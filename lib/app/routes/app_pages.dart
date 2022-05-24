@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
+import '../modules/main/bindings/main_binding.dart';
+import '../modules/main/views/main_view.dart';
 import '../modules/movie/bindings/movie_binding.dart';
 import '../modules/movie/views/movie_view.dart';
 import '../modules/splashscreen/bindings/splashscreen_binding.dart';
@@ -29,6 +31,11 @@ class AppPages {
       name: _Paths.MOVIE,
       page: () => MovieView(),
       binding: MovieBinding(),
+    ),
+    GetPage(
+      name: _Paths.MAIN,
+      page: () => MainView(),
+      binding: MainBinding(),
     ),
   ];
 }

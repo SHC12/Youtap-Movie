@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:sizer/sizer.dart';
 import 'package:youtap_movie/app/modules/shared/fonts.dart';
 import 'package:youtap_movie/app/utils/url_list_services.dart';
 
@@ -23,7 +24,7 @@ class LargePosterCard extends StatelessWidget {
         child: image == ""
             ? Container(
                 color: Colors.grey,
-                height: Get.height * 0.3,
+                height: 3.h,
                 child: Center(
                   child: Text(
                     'NO POSTER',
@@ -32,7 +33,7 @@ class LargePosterCard extends StatelessWidget {
                 ),
               )
             : Container(
-                height: Get.height * 0.3,
+                height: 3.h,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
                 ),

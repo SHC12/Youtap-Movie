@@ -19,6 +19,8 @@ dependencies:
   random_color: 1.0.6-nullsafety
   like_button: 2.0.4
   readmore: 2.1.0
+  animated_bottom_navigation_bar: 0.3.3
+  remixicon: 1.0.0
   flutter: 
     sdk: flutter
 
