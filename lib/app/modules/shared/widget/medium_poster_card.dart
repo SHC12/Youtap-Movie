@@ -1,10 +1,5 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:shimmer/shimmer.dart';
 import 'package:sizer/sizer.dart';
-import 'package:youtap_movie/app/data/movie_model.dart';
-import 'package:youtap_movie/app/data/tv_model.dart';
 import 'package:youtap_movie/app/modules/shared/fonts.dart';
 import 'package:youtap_movie/app/utils/url_list_services.dart';
 
@@ -38,9 +33,10 @@ class MediumPosterCard extends StatelessWidget {
                     decoration: BoxDecoration(borderRadius: BorderRadius.circular(8), image: DecorationImage(image: NetworkImage(UrlListService.baseUrlImageW500 + poster!), fit: BoxFit.fill)),
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(vertical: 1.h),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                    padding: EdgeInsets.symmetric(vertical: 1.h, horizontal: 2.w),
+                    child: Row(
+                      // crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         SizedBox(
                           child: Text(

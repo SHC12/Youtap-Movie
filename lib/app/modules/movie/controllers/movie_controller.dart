@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:youtap_movie/app/data/config/constant.dart';
 import 'package:youtap_movie/app/data/credits_movie_model.dart';
 import 'package:youtap_movie/app/data/detail_movie_model.dart';
 import 'package:youtap_movie/app/data/movie_model.dart';
@@ -17,23 +18,16 @@ class MovieController extends GetxController {
   var isLoading = false.obs;
   var key = "".obs;
   var isMoreDataAvailable = true.obs;
-  // var reviewController = Get.put(ReviewController());
 
   ReviewController reviewController = Get.put(ReviewController());
   var network = Get.put(NetworkHelper());
-
-  @override
-  void onInit() {
-    super.onInit();
-    fetchNowPlaying();
-  }
 
   fetchNowPlaying() async {
     isLoading(true);
     return network.get(
         path: UrlListService.urlNowPlayingMovie,
         queryParameters: {
-          'api_key': '5bc459b70dbb68f19b8106667ecc57c8',
+          'api_key': Constant.apiKey,
           'language': 'en-US',
           'page': '1',
         },
@@ -54,7 +48,7 @@ class MovieController extends GetxController {
     return network.get(
         path: UrlListService.urlPopularMovie,
         queryParameters: {
-          'api_key': '5bc459b70dbb68f19b8106667ecc57c8',
+          'api_key': Constant.apiKey,
           'language': 'en-US',
           'page': '1',
         },
@@ -75,7 +69,7 @@ class MovieController extends GetxController {
     return network.get(
         path: UrlListService.urlUpcomingMovie,
         queryParameters: {
-          'api_key': '5bc459b70dbb68f19b8106667ecc57c8',
+          'api_key': Constant.apiKey,
           'language': 'en-US',
           'page': '1',
         },
@@ -93,15 +87,15 @@ class MovieController extends GetxController {
 
   fetchDetailMovie(String movieId, {bool isNowPlaying = false}) async {
     return network.get(
-        path: UrlListService.baseUrl + movieId,
+        path: UrlListService.baseUrl + 'movie/' + movieId,
         isRawResult: true,
-        queryParameters: {'api_key': '5bc459b70dbb68f19b8106667ecc57c8', 'language': 'en-US'},
+        queryParameters: {'api_key': Constant.apiKey, 'language': 'en-US'},
         onSuccess: (content) async {
           print('response : $content');
 
           await network.get(
-              path: UrlListService.baseUrl + movieId + '/credits',
-              queryParameters: {'api_key': '5bc459b70dbb68f19b8106667ecc57c8', 'language': 'en-US'},
+              path: UrlListService.baseUrl + 'movie/' + movieId + '/credits',
+              queryParameters: {'api_key': Constant.apiKey, 'language': 'en-US'},
               isRawResult: true,
               onSuccess: (credit) {
                 print('credits response : $credit');

@@ -1,11 +1,8 @@
 import 'package:get/get.dart';
 import 'package:youtap_movie/app/data/credits_movie_model.dart';
-import 'package:youtap_movie/app/data/detail_movie_model.dart';
 import 'package:youtap_movie/app/data/detail_tv.dart';
-import 'package:youtap_movie/app/data/movie_model.dart';
 import 'package:youtap_movie/app/data/tv_model.dart';
 import 'package:youtap_movie/app/modules/movie/controllers/review_controller.dart';
-import 'package:youtap_movie/app/modules/movie/views/detail_movie_view.dart';
 import 'package:youtap_movie/app/modules/tv/views/detail_tv_view.dart';
 import 'package:youtap_movie/app/utils/network_helper.dart';
 import 'package:youtap_movie/app/utils/url_list_services.dart';

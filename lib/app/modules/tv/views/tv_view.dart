@@ -1,13 +1,13 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
-import 'package:shimmer/shimmer.dart';
 import 'package:sizer/sizer.dart';
 import 'package:youtap_movie/app/modules/home/views/widget/refresh_widget.dart';
 import 'package:youtap_movie/app/modules/shared/colors.dart';
 import 'package:youtap_movie/app/modules/shared/fonts.dart';
+import 'package:youtap_movie/app/modules/shared/widget/item/shimmer_large_poster.dart';
+import 'package:youtap_movie/app/modules/shared/widget/item/shimmer_medium_poster.dart';
 import 'package:youtap_movie/app/modules/shared/widget/large_poster_card.dart';
 import 'package:youtap_movie/app/modules/shared/widget/medium_poster_card.dart';
 import 'package:youtap_movie/app/modules/tv/controllers/tv_controller.dart';
@@ -78,7 +78,7 @@ class _TvViewState extends State<TvView> {
                       children: [
                         Padding(
                           padding: EdgeInsets.only(left: 6.w, bottom: 0.h),
-                          child: Text('Now Playing', style: whiteTextFont.copyWith(fontSize: Get.height * 0.024, fontWeight: FontWeight.w500)),
+                          child: Text('On Air', style: whiteTextFont.copyWith(fontSize: Get.height * 0.024, fontWeight: FontWeight.w500)),
                         ),
                         Obx(() {
                           return !tvController.isLoading.value
@@ -101,37 +101,7 @@ class _TvViewState extends State<TvView> {
                                         );
                                       }),
                                 )
-                              : Shimmer.fromColors(
-                                  child: CarouselSlider.builder(
-                                    itemCount: 3,
-                                    itemBuilder: (context, index, relIdx) {
-                                      return Container(
-                                        margin: EdgeInsets.only(left: (index == 0) ? 0 : 0, right: (index == 3 - 1) ? 20 : 16),
-                                        child: Container(
-                                          decoration: BoxDecoration(color: Colors.white10, borderRadius: BorderRadius.all(Radius.circular(8))),
-                                          height: Get.height * 0.3,
-                                          width: Get.width * 0.2,
-                                        ),
-                                      );
-                                    },
-                                    options: CarouselOptions(
-                                      height: Get.height * 0.4,
-                                      enableInfiniteScroll: false,
-                                      viewportFraction: 0.60,
-                                      disableCenter: true,
-                                      enlargeCenterPage: true,
-                                      initialPage: 0,
-                                      onPageChanged: (index, reason) {
-                                        // setState(() {
-                                        //   _currentSliderNowPlaying = index;
-                                        // });
-                                      },
-                                      scrollDirection: Axis.horizontal,
-                                    ),
-                                  ),
-                                  baseColor: Colors.white60,
-                                  highlightColor: Colors.grey[300]!,
-                                );
+                              : ShimmerCarouselLargePoster();
                         })
                       ],
                     ),
@@ -147,13 +117,16 @@ class _TvViewState extends State<TvView> {
                           padding: EdgeInsets.only(left: 6.w, bottom: 0.h),
                           child: Text('Popular', style: whiteTextFont.copyWith(fontSize: Get.height * 0.024, fontWeight: FontWeight.w500)),
                         ),
+                        SizedBox(
+                          height: 1.h,
+                        ),
                         Obx(() {
                           return !tvController.isLoading.value
                               ? Container(
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(18),
                                   ),
-                                  height: 26.h,
+                                  height: 20.h,
                                   child: ListView.builder(
                                       itemCount: tvController.listTvPopular.length,
                                       scrollDirection: Axis.horizontal,
@@ -176,33 +149,7 @@ class _TvViewState extends State<TvView> {
                                         );
                                       }),
                                 )
-                              : Shimmer.fromColors(
-                                  child: CarouselSlider.builder(
-                                    itemCount: 3,
-                                    itemBuilder: (context, index, relIdx) {
-                                      return Container(
-                                        margin: EdgeInsets.only(left: (index == 0) ? 0 : 0, right: (index == 3 - 1) ? 20 : 16),
-                                        child: Container(
-                                          decoration: BoxDecoration(color: Colors.white10, borderRadius: BorderRadius.all(Radius.circular(8))),
-                                          height: Get.height * 0.3,
-                                          width: Get.width * 0.2,
-                                        ),
-                                      );
-                                    },
-                                    options: CarouselOptions(
-                                      height: Get.height * 0.4,
-                                      enableInfiniteScroll: false,
-                                      viewportFraction: 0.60,
-                                      disableCenter: true,
-                                      enlargeCenterPage: true,
-                                      initialPage: 0,
-                                      onPageChanged: (index, reason) {},
-                                      scrollDirection: Axis.horizontal,
-                                    ),
-                                  ),
-                                  baseColor: Colors.white60,
-                                  highlightColor: Colors.grey[300]!,
-                                );
+                              : ShimmerCarouselMediumPoster();
                         })
                       ],
                     ),

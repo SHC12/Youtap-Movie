@@ -3,7 +3,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:random_color/random_color.dart';
 import 'package:sizer/sizer.dart';
-import 'package:youtap_movie/app/modules/movie/controllers/movie_controller.dart';
 import 'package:youtap_movie/app/modules/movie/controllers/review_controller.dart';
 import 'package:youtap_movie/app/modules/shared/colors.dart';
 import 'package:youtap_movie/app/modules/shared/fonts.dart';
@@ -26,7 +25,6 @@ class _DetailTvViewState extends State<DetailTvView> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
   }
 
@@ -57,23 +55,6 @@ class _DetailTvViewState extends State<DetailTvView> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Container(
-                        color: Colors.redAccent,
-                        padding: EdgeInsets.symmetric(vertical: 12, horizontal: 12),
-                        width: Get.width,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Icon(Icons.warning_amber_rounded, color: Colors.white),
-                            SizedBox(
-                              width: 5,
-                            ),
-                            Flexible(
-                              child: Text('Jika menemukan review yang merupakan spoiler, silahkan dilaporkan dengan menekan tombol lapor', style: whiteTextFont.copyWith(fontSize: 12)),
-                            ),
-                          ],
-                        ),
-                      ),
                       Stack(
                         children: [
                           Positioned.fill(

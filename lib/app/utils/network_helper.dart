@@ -4,7 +4,6 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 
-import 'package:get/get.dart' as getx;
 import 'package:youtap_movie/app/utils/url_list_services.dart';
 
 class NetworkHelper {
@@ -86,8 +85,7 @@ class NetworkHelper {
   }) async {
     try {
       _client.interceptors.add(LogInterceptor());
-      final response =
-          await _client.download(path!, '', options: Options(headers: {HttpHeaders.acceptEncodingHeader: "*"}));
+      final response = await _client.download(path!, '', options: Options(headers: {HttpHeaders.acceptEncodingHeader: "*"}));
 
       return isRawResult ? onSuccess!(response.data) : onSuccess!(response.data);
     } on DioError catch (e) {

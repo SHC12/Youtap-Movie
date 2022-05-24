@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:youtap_movie/app/data/config/constant.dart';
 import 'package:youtap_movie/app/data/review_movie_model.dart';
 import 'package:youtap_movie/app/utils/network_helper.dart';
 import 'package:youtap_movie/app/utils/url_list_services.dart';
@@ -13,8 +14,8 @@ class ReviewController extends GetxController {
 
   fetchReviewMovie(String movieId) async {
     return network.get(
-        path: UrlListService.baseUrl + movieId + '/reviews',
-        queryParameters: {'api_key': '5bc459b70dbb68f19b8106667ecc57c8', 'language': 'en-US'},
+        path: UrlListService.baseUrl + 'movie/' + movieId + '/reviews',
+        queryParameters: {'api_key': Constant.apiKey, 'language': 'en-US'},
         onSuccess: (content) {
           print('response : $content');
           List<Review> result = (content as Iterable).map((e) => Review.fromJson(e)).toList();
