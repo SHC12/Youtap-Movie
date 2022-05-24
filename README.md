@@ -56,28 +56,28 @@
 
 **Splash Screen**
 
-![<img src="/assets/images/splashscreen.png" width="100"/>](/assets/images/screen_capture/splash.png)
+![<img src="/assets/image/splashscreen.png" width="100"/>](/assets/image/splashscreen.png)
 
 **Shimmer Loading**
 
-![<img src="/assets/images/loading.png" height="100"/>](/assets/images/screen_capture/loading_shimmer.png)
+![<img src="/assets/image/loading.png" height="100"/>](/assets/image/loading.png)
 
 **Movie**
 
-![<img src="/assets/images/movie.png" height="100"/>](/assets/images/screen_capture/list_product.png)
+![<img src="/assets/image/movie.png" height="100"/>](/assets/image/movie.png)
 
 **Detail Movie**
 
-![<img src="/assets/images/detail_movie.png" height="100"/>](/assets/images/screen_capture/refresh_indicator.png)
+![<img src="/assets/image/detail_movie.png" height="100"/>](/assets/image/detail_movie.png)
 
 **TV**
 
-![<img src="/assets/images/tv.png" height="100"/>](/assets/images/screen_capture/search_product.png)
+![<img src="/assets/image/tv.png" height="100"/>](/assets/image/tv.png)
 
 **Detail TV**
 
-![<img src="/assets/images/detail_tv.png" height="100"/>](/assets/images/screen_capture/detail_screen.png)
+![<img src="/assets/image/detail_tv.png" height="100"/>](/assets/image/detail_tv.png)
 
 **Profile**
 
-![<img src="/assets/images/profile.png" height="100"/>](/assets/images/screen_capture/option_add_to_cart.png)
+![<img src="/assets/image/profile.png" height="100"/>](/assets/image/profile.png)

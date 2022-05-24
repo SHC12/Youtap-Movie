@@ -2,7 +2,7 @@
     package="com.youtap.movie.youtap_movie">
      <uses-permission android:name="android.permission.INTERNET"/>
    <application
-        android:label="youtap_movie"
+        android:label="Youtap Movie"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
