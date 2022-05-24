@@ -35,10 +35,11 @@ class MediumPosterCard extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 1.h, horizontal: 2.w),
                     child: Row(
-                      // crossAxisAlignment: CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         SizedBox(
+                          width: 35.w,
                           child: Text(
                             title!,
                             maxLines: 2,

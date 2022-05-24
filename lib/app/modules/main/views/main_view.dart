@@ -162,7 +162,7 @@ class _MainViewState extends State<MainView> with SingleTickerProviderStateMixin
           controller: _tabController,
           children: <Widget>[
             HomeView(),
-            HomeView(),
+            TvView(),
             ProfileView(),
           ],
         ),

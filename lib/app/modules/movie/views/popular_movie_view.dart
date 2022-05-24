@@ -29,7 +29,7 @@ class PopularMovieView extends StatelessWidget {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(18),
                     ),
-                    height: 20.h,
+                    height: 24.h,
                     child: ListView.builder(
                         itemCount: movieController.listPopular.length,
                         scrollDirection: Axis.horizontal,

@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 import 'package:youtap_movie/app/modules/home/views/widget/refresh_widget.dart';
+import 'package:youtap_movie/app/modules/movie/views/widget/header_widget.dart';
 import 'package:youtap_movie/app/modules/shared/colors.dart';
 import 'package:youtap_movie/app/modules/shared/fonts.dart';
 import 'package:youtap_movie/app/modules/shared/widget/item/shimmer_large_poster.dart';
@@ -46,30 +47,22 @@ class _TvViewState extends State<TvView> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  HeaderWidget(),
+                  SizedBox(
+                    height: 2.h,
+                  ),
                   Padding(
-                    padding: const EdgeInsets.all(24),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Column(
-                          children: [
-                            SizedBox(
-                              width: Get.width / 1.5,
-                              child: Text(
-                                'Hello,' + ' Dedi Kurniawan',
-                                style: whiteTextFont.copyWith(fontSize: Get.height * 0.025, fontWeight: FontWeight.bold),
-                                overflow: TextOverflow.clip,
-                              ),
-                            ),
-                          ],
-                        ),
-                        GestureDetector(
-                          onTap: () {},
-                          child: SvgPicture.asset('assets/svg/avatar.svg', width: Get.height * 0.07, color: yellowPrimary),
-                        )
-                      ],
+                    padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 1.h),
+                    child: SizedBox(
+                      child: Text(
+                        'Hello,' + ' Dedi Kurniawan',
+                        style: whiteTextFont.copyWith(fontSize: 16.sp, fontWeight: FontWeight.bold),
+                        overflow: TextOverflow.clip,
+                      ),
                     ),
+                  ),
+                  SizedBox(
+                    height: 2.h,
                   ),
                   Container(
                     // padding: EdgeInsets.only(left: 24),
@@ -126,7 +119,7 @@ class _TvViewState extends State<TvView> {
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(18),
                                   ),
-                                  height: 20.h,
+                                  height: 24.h,
                                   child: ListView.builder(
                                       itemCount: tvController.listTvPopular.length,
                                       scrollDirection: Axis.horizontal,
