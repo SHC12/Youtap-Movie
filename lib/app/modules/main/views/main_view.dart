@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:remixicon/remixicon.dart';
 import 'package:sizer/sizer.dart';
 import 'package:youtap_movie/app/modules/home/views/home_view.dart';
+import 'package:youtap_movie/app/modules/profile/views/profile_view.dart';
 import 'package:youtap_movie/app/modules/shared/colors.dart';
 import 'package:youtap_movie/app/modules/shared/fonts.dart';
 import 'package:youtap_movie/app/modules/tv/views/tv_view.dart';
@@ -161,8 +162,8 @@ class _MainViewState extends State<MainView> with SingleTickerProviderStateMixin
           controller: _tabController,
           children: <Widget>[
             HomeView(),
-            TvView(),
             HomeView(),
+            ProfileView(),
           ],
         ),
       ),
