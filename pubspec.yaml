@@ -16,6 +16,9 @@ dependencies:
   flutter_svg: 1.0.3
   carousel_slider: 4.1.1
   cached_network_image: 3.2.0
+  random_color: 1.0.6-nullsafety
+  like_button: 2.0.4
+  readmore: 2.1.0
   flutter: 
     sdk: flutter
 
