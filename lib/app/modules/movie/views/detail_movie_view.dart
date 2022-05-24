@@ -37,7 +37,7 @@ class _DetailMovieViewState extends State<DetailMovieView> {
         centerTitle: true,
         title: Text(
           movieController.detailMovie.value.title ?? '',
-          style: whiteTextFont.copyWith(fontWeight: FontWeight.bold, fontSize: Get.height * 0.025),
+          style: whiteTextFont.copyWith(fontWeight: FontWeight.bold, fontSize: 16.sp),
         ),
         leading: GestureDetector(
             onTap: () {
@@ -62,9 +62,12 @@ class _DetailMovieViewState extends State<DetailMovieView> {
                             child: Align(
                               alignment: Alignment.bottomCenter,
                               child: Container(
-                                width: Get.width * 0.58,
-                                height: Get.height * 0.04,
-                                decoration: BoxDecoration(color: Colors.white12, borderRadius: BorderRadius.only(bottomLeft: Radius.circular(24), bottomRight: Radius.circular(24))),
+                                width: 52.w,
+                                height: 40.h,
+                                decoration: BoxDecoration(
+                                    color: Colors.white12,
+                                    borderRadius: BorderRadius.only(
+                                        bottomLeft: Radius.circular(24), bottomRight: Radius.circular(24))),
                               ),
                             ),
                           ),
@@ -73,9 +76,12 @@ class _DetailMovieViewState extends State<DetailMovieView> {
                             child: Align(
                               alignment: Alignment.bottomCenter,
                               child: Container(
-                                width: Get.width * 0.58,
-                                height: Get.height * 0.04,
-                                decoration: BoxDecoration(color: Colors.white24, borderRadius: BorderRadius.only(bottomLeft: Radius.circular(24), bottomRight: Radius.circular(24))),
+                                width: 60.w,
+                                height: 42.h,
+                                decoration: BoxDecoration(
+                                    color: Colors.white24,
+                                    borderRadius: BorderRadius.only(
+                                        bottomLeft: Radius.circular(24), bottomRight: Radius.circular(24))),
                               ),
                             ),
                           ),
@@ -84,8 +90,8 @@ class _DetailMovieViewState extends State<DetailMovieView> {
                             child: Center(
                               child: movieController.detailMovie.value.posterPath == ""
                                   ? Container(
-                                      width: Get.width * 0.6,
-                                      height: Get.height * 0.5,
+                                      width: 60.w,
+                                      height: 50.h,
                                       child: Center(
                                         child: Text('NO POSTER', style: whiteTextFont),
                                       ),
@@ -93,9 +99,14 @@ class _DetailMovieViewState extends State<DetailMovieView> {
                                   : Hero(
                                       tag: 'large-poster-' + movieController.detailMovie.value.posterPath!,
                                       child: Container(
-                                        width: Get.width * 0.6,
-                                        height: Get.height * 0.5,
-                                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(24), image: DecorationImage(image: NetworkImage(UrlListService.baseUrlImageW500 + movieController.detailMovie.value.posterPath!), fit: BoxFit.fill)),
+                                        width: 60.w,
+                                        height: 50.h,
+                                        decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(24),
+                                            image: DecorationImage(
+                                                image: NetworkImage(UrlListService.baseUrlImageW500 +
+                                                    movieController.detailMovie.value.posterPath!),
+                                                fit: BoxFit.fill)),
                                       ),
                                     ),
                             ),
@@ -109,43 +120,43 @@ class _DetailMovieViewState extends State<DetailMovieView> {
                           children: [
                             Text(
                               movieController.detailMovie.value.title ?? "",
-                              style: whiteTextFont.copyWith(fontSize: Get.height * 0.03, fontWeight: FontWeight.bold),
+                              style: whiteTextFont.copyWith(fontSize: 16.sp, fontWeight: FontWeight.bold),
                             ),
                             SizedBox(
-                              height: Get.height * 0.01,
+                              height: 1.h,
                             ),
                             Row(
                               children: [
                                 Text(
-                                  'Tanggal Rilis : ' + movieController.detailMovie.value.releaseDate!,
+                                  'Release Date : ' + movieController.detailMovie.value.releaseDate!,
                                   style: whiteTextFont,
                                 ),
                                 SizedBox(
-                                  width: 10,
+                                  width: 5.w,
                                 ),
                                 Text(
                                   '|',
                                   style: whiteTextFont,
                                 ),
                                 SizedBox(
-                                  width: 10,
+                                  width: 5.w,
                                 ),
                                 Text(
                                   movieController.detailMovie.value.voteAverage.toString(),
                                   style: whiteTextFont,
                                 ),
                                 SizedBox(
-                                  width: 5,
+                                  width: 2.w,
                                 ),
                                 Icon(
                                   Icons.star,
                                   color: yellowPrimary,
-                                  size: Get.height * 0.02,
+                                  size: 14.sp,
                                 )
                               ],
                             ),
                             SizedBox(
-                              height: Get.height * 0.01,
+                              height: 1.h,
                             ),
                             Visibility(
                               visible: true,
@@ -155,10 +166,12 @@ class _DetailMovieViewState extends State<DetailMovieView> {
                                           padding: EdgeInsets.only(right: 8.0, top: 8),
                                           child: Container(
                                             padding: EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-                                            decoration: BoxDecoration(color: RandomColor().randomColor(colorBrightness: ColorBrightness.dark), borderRadius: BorderRadius.circular(8)),
+                                            decoration: BoxDecoration(
+                                                color: RandomColor().randomColor(colorBrightness: ColorBrightness.dark),
+                                                borderRadius: BorderRadius.circular(8)),
                                             child: Text(
                                               e.name!,
-                                              style: whiteTextFont.copyWith(fontSize: Get.height * 0.015),
+                                              style: whiteTextFont.copyWith(fontSize: 10.sp),
                                             ),
                                           ),
                                         ))
@@ -166,20 +179,19 @@ class _DetailMovieViewState extends State<DetailMovieView> {
                               ),
                             ),
                             SizedBox(
-                              height: Get.height * 0.02,
+                              height: 2.h,
                             ),
                             Text(
-                              'Aktor & Kru',
-                              style: whiteTextFont.copyWith(fontSize: Get.height * 0.02, fontWeight: FontWeight.w600),
+                              'Cast',
+                              style: whiteTextFont.copyWith(fontSize: 14.sp, fontWeight: FontWeight.w600),
                             ),
                             SizedBox(
-                              height: Get.height * 0.02,
+                              height: 2.h,
                             ),
                             Visibility(
                               visible: true,
                               child: Container(
-                                  width: Get.width,
-                                  height: Get.height * 0.15,
+                                  height: 18.h,
                                   child: ListView.builder(
                                       scrollDirection: Axis.horizontal,
                                       itemCount: movieController.listCredits.value.cast!.length,
@@ -190,18 +202,23 @@ class _DetailMovieViewState extends State<DetailMovieView> {
                                               child: Column(
                                                 children: [
                                                   Container(
-                                                    width: Get.width * 0.2,
-                                                    height: Get.height * 0.1,
-                                                    decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(20))),
-                                                    child: movieController.listCredits.value.cast![i].profilePath != null
+                                                    width: 20.w,
+                                                    height: 10.h,
+                                                    decoration: BoxDecoration(
+                                                        borderRadius: BorderRadius.all(Radius.circular(20))),
+                                                    child: movieController.listCredits.value.cast![i].profilePath !=
+                                                            null
                                                         ? Image.network(
-                                                            UrlListService.baseUrlImageW500 + movieController.listCredits.value.cast![i].profilePath!,
+                                                            UrlListService.baseUrlImageW500 +
+                                                                movieController.listCredits.value.cast![i].profilePath!,
                                                             fit: BoxFit.fill,
                                                           )
-                                                        : SvgPicture.asset('assets/svg/avatar.svg', color: RandomColor().randomColor(colorBrightness: ColorBrightness.light)),
+                                                        : SvgPicture.asset('assets/svg/avatar.svg',
+                                                            color: RandomColor()
+                                                                .randomColor(colorBrightness: ColorBrightness.light)),
                                                   ),
                                                   SizedBox(
-                                                    height: 2,
+                                                    height: 1.h,
                                                   ),
                                                   Text(
                                                     movieController.listCredits.value.cast![i].name!,
@@ -209,7 +226,7 @@ class _DetailMovieViewState extends State<DetailMovieView> {
                                                   ),
                                                   Text(
                                                     movieController.listCredits.value.cast![i].character!,
-                                                    style: yellowTextFont.copyWith(fontSize: 8),
+                                                    style: yellowTextFont.copyWith(fontSize: 10.sp),
                                                   )
                                                 ],
                                               ),
@@ -220,19 +237,19 @@ class _DetailMovieViewState extends State<DetailMovieView> {
                               height: Get.height * 0.02,
                             ),
                             Text(
-                              'Sinopsis',
-                              style: whiteTextFont.copyWith(fontSize: Get.height * 0.02, fontWeight: FontWeight.w600),
+                              'Synopsis',
+                              style: whiteTextFont.copyWith(fontSize: 14.sp, fontWeight: FontWeight.w600),
                             ),
                             SizedBox(
-                              height: Get.height * 0.01,
+                              height: 1.h,
                             ),
                             Text(
                               movieController.detailMovie.value.overview ?? "",
-                              style: whiteTextFont.copyWith(fontSize: Get.height * 0.015),
+                              style: whiteTextFont.copyWith(fontSize: 10.sp),
                               overflow: TextOverflow.clip,
                             ),
                             SizedBox(
-                              height: Get.height * 0.02,
+                              height: 2.h,
                             ),
                             SizedBox(
                               height: 2.h,
@@ -242,7 +259,7 @@ class _DetailMovieViewState extends State<DetailMovieView> {
                               children: [
                                 Text(
                                   'Review',
-                                  style: whiteTextFont.copyWith(fontSize: Get.height * 0.02, fontWeight: FontWeight.w600),
+                                  style: whiteTextFont.copyWith(fontSize: 14.sp, fontWeight: FontWeight.w600),
                                 ),
                               ],
                             ),
@@ -250,10 +267,10 @@ class _DetailMovieViewState extends State<DetailMovieView> {
                               color: Colors.white,
                             ),
                             SizedBox(
-                              height: Get.height * 0.02,
+                              height: 2.h,
                             ),
                             Obx(() => reviewController.listReviewMovie.length == 0 && !reviewController.isLoading.value
-                                ? Center(child: Text('Belum ada review', style: whiteTextFont))
+                                ? Center(child: Text('No reviews yet', style: whiteTextFont))
                                 : reviewController.listReviewMovie.length > 0 && !reviewController.isLoading.value
                                     ? Container(
                                         width: Get.width,
@@ -271,9 +288,6 @@ class _DetailMovieViewState extends State<DetailMovieView> {
                                         backgroundColor: yellowPrimary,
                                         valueColor: new AlwaysStoppedAnimation<Color>(Colors.white),
                                       ))),
-                            SizedBox(
-                              height: 30,
-                            )
                           ],
                         ),
                       )

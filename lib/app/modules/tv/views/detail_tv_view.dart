@@ -37,7 +37,7 @@ class _DetailTvViewState extends State<DetailTvView> {
         centerTitle: true,
         title: Text(
           tvController.detailTv.value.name ?? '',
-          style: whiteTextFont.copyWith(fontWeight: FontWeight.bold, fontSize: Get.height * 0.025),
+          style: whiteTextFont.copyWith(fontWeight: FontWeight.bold, fontSize: 16.sp),
         ),
         leading: GestureDetector(
             onTap: () {
@@ -62,9 +62,12 @@ class _DetailTvViewState extends State<DetailTvView> {
                             child: Align(
                               alignment: Alignment.bottomCenter,
                               child: Container(
-                                width: Get.width * 0.58,
-                                height: Get.height * 0.04,
-                                decoration: BoxDecoration(color: Colors.white12, borderRadius: BorderRadius.only(bottomLeft: Radius.circular(24), bottomRight: Radius.circular(24))),
+                                width: 52.w,
+                                height: 40.h,
+                                decoration: BoxDecoration(
+                                    color: Colors.white12,
+                                    borderRadius: BorderRadius.only(
+                                        bottomLeft: Radius.circular(24), bottomRight: Radius.circular(24))),
                               ),
                             ),
                           ),
@@ -73,9 +76,12 @@ class _DetailTvViewState extends State<DetailTvView> {
                             child: Align(
                               alignment: Alignment.bottomCenter,
                               child: Container(
-                                width: Get.width * 0.58,
-                                height: Get.height * 0.04,
-                                decoration: BoxDecoration(color: Colors.white24, borderRadius: BorderRadius.only(bottomLeft: Radius.circular(24), bottomRight: Radius.circular(24))),
+                                width: 60.w,
+                                height: 42.h,
+                                decoration: BoxDecoration(
+                                    color: Colors.white24,
+                                    borderRadius: BorderRadius.only(
+                                        bottomLeft: Radius.circular(24), bottomRight: Radius.circular(24))),
                               ),
                             ),
                           ),
@@ -84,8 +90,8 @@ class _DetailTvViewState extends State<DetailTvView> {
                             child: Center(
                               child: tvController.detailTv.value.posterPath == ""
                                   ? Container(
-                                      width: Get.width * 0.6,
-                                      height: Get.height * 0.5,
+                                      width: 60.w,
+                                      height: 50.h,
                                       child: Center(
                                         child: Text('NO POSTER', style: whiteTextFont),
                                       ),
@@ -93,9 +99,14 @@ class _DetailTvViewState extends State<DetailTvView> {
                                   : Hero(
                                       tag: 'large-poster-' + tvController.detailTv.value.posterPath!,
                                       child: Container(
-                                        width: Get.width * 0.6,
-                                        height: Get.height * 0.5,
-                                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(24), image: DecorationImage(image: NetworkImage(UrlListService.baseUrlImageW500 + tvController.detailTv.value.posterPath!), fit: BoxFit.fill)),
+                                        width: 60.w,
+                                        height: 50.h,
+                                        decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(24),
+                                            image: DecorationImage(
+                                                image: NetworkImage(UrlListService.baseUrlImageW500 +
+                                                    tvController.detailTv.value.posterPath!),
+                                                fit: BoxFit.fill)),
                                       ),
                                     ),
                             ),
@@ -109,7 +120,7 @@ class _DetailTvViewState extends State<DetailTvView> {
                           children: [
                             Text(
                               tvController.detailTv.value.name ?? "",
-                              style: whiteTextFont.copyWith(fontSize: Get.height * 0.03, fontWeight: FontWeight.bold),
+                              style: whiteTextFont.copyWith(fontSize: 16.sp, fontWeight: FontWeight.bold),
                             ),
                             SizedBox(
                               height: Get.height * 0.01,
@@ -117,18 +128,18 @@ class _DetailTvViewState extends State<DetailTvView> {
                             Row(
                               children: [
                                 Text(
-                                  'Tanggal Rilis : ' + tvController.detailTv.value.firstAirDate!,
+                                  'Release Date : ' + tvController.detailTv.value.firstAirDate!,
                                   style: whiteTextFont,
                                 ),
                                 SizedBox(
-                                  width: 10,
+                                  width: 5.w,
                                 ),
                                 Text(
                                   '|',
                                   style: whiteTextFont,
                                 ),
                                 SizedBox(
-                                  width: 10,
+                                  width: 5.w,
                                 ),
                                 Text(
                                   tvController.detailTv.value.voteAverage.toString(),
@@ -140,12 +151,12 @@ class _DetailTvViewState extends State<DetailTvView> {
                                 Icon(
                                   Icons.star,
                                   color: yellowPrimary,
-                                  size: Get.height * 0.02,
+                                  size: 14.sp,
                                 )
                               ],
                             ),
                             SizedBox(
-                              height: Get.height * 0.01,
+                              height: 1.h,
                             ),
                             Visibility(
                               visible: true,
@@ -155,10 +166,12 @@ class _DetailTvViewState extends State<DetailTvView> {
                                           padding: EdgeInsets.only(right: 8.0, top: 8),
                                           child: Container(
                                             padding: EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-                                            decoration: BoxDecoration(color: RandomColor().randomColor(colorBrightness: ColorBrightness.dark), borderRadius: BorderRadius.circular(8)),
+                                            decoration: BoxDecoration(
+                                                color: RandomColor().randomColor(colorBrightness: ColorBrightness.dark),
+                                                borderRadius: BorderRadius.circular(8)),
                                             child: Text(
                                               e.name!,
-                                              style: whiteTextFont.copyWith(fontSize: Get.height * 0.015),
+                                              style: whiteTextFont.copyWith(fontSize: 10.sp),
                                             ),
                                           ),
                                         ))
@@ -169,17 +182,16 @@ class _DetailTvViewState extends State<DetailTvView> {
                               height: Get.height * 0.02,
                             ),
                             Text(
-                              'Aktor & Kru',
-                              style: whiteTextFont.copyWith(fontSize: Get.height * 0.02, fontWeight: FontWeight.w600),
+                              'Cast',
+                              style: whiteTextFont.copyWith(fontSize: 14.sp, fontWeight: FontWeight.w600),
                             ),
                             SizedBox(
-                              height: Get.height * 0.02,
+                              height: 2.h,
                             ),
                             Visibility(
                               visible: true,
                               child: Container(
-                                  width: Get.width,
-                                  height: Get.height * 0.15,
+                                  height: 18.h,
                                   child: ListView.builder(
                                       scrollDirection: Axis.horizontal,
                                       itemCount: tvController.listCredits.value.cast!.length,
@@ -190,18 +202,22 @@ class _DetailTvViewState extends State<DetailTvView> {
                                               child: Column(
                                                 children: [
                                                   Container(
-                                                    width: Get.width * 0.2,
-                                                    height: Get.height * 0.1,
-                                                    decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(20))),
+                                                    width: 20.w,
+                                                    height: 10.h,
+                                                    decoration: BoxDecoration(
+                                                        borderRadius: BorderRadius.all(Radius.circular(20))),
                                                     child: tvController.listCredits.value.cast![i].profilePath != null
                                                         ? Image.network(
-                                                            UrlListService.baseUrlImageW500 + tvController.listCredits.value.cast![i].profilePath!,
+                                                            UrlListService.baseUrlImageW500 +
+                                                                tvController.listCredits.value.cast![i].profilePath!,
                                                             fit: BoxFit.fill,
                                                           )
-                                                        : SvgPicture.asset('assets/svg/avatar.svg', color: RandomColor().randomColor(colorBrightness: ColorBrightness.light)),
+                                                        : SvgPicture.asset('assets/svg/avatar.svg',
+                                                            color: RandomColor()
+                                                                .randomColor(colorBrightness: ColorBrightness.light)),
                                                   ),
                                                   SizedBox(
-                                                    height: 2,
+                                                    height: 1.h,
                                                   ),
                                                   Text(
                                                     tvController.listCredits.value.cast![i].name!,
@@ -209,7 +225,7 @@ class _DetailTvViewState extends State<DetailTvView> {
                                                   ),
                                                   Text(
                                                     tvController.listCredits.value.cast![i].character!,
-                                                    style: yellowTextFont.copyWith(fontSize: 8),
+                                                    style: yellowTextFont.copyWith(fontSize: 10.sp),
                                                   )
                                                 ],
                                               ),
@@ -217,32 +233,29 @@ class _DetailTvViewState extends State<DetailTvView> {
                                       })),
                             ),
                             SizedBox(
-                              height: Get.height * 0.02,
+                              height: 2.h,
                             ),
                             Text(
-                              'Sinopsis',
-                              style: whiteTextFont.copyWith(fontSize: Get.height * 0.02, fontWeight: FontWeight.w600),
+                              'Synopsis',
+                              style: whiteTextFont.copyWith(fontSize: 14.sp, fontWeight: FontWeight.w600),
                             ),
                             SizedBox(
-                              height: Get.height * 0.01,
+                              height: 1.h,
                             ),
                             Text(
                               tvController.detailTv.value.overview ?? "",
-                              style: whiteTextFont.copyWith(fontSize: Get.height * 0.015),
+                              style: whiteTextFont.copyWith(fontSize: 10.sp),
                               overflow: TextOverflow.clip,
                             ),
                             SizedBox(
-                              height: Get.height * 0.02,
-                            ),
-                            SizedBox(
-                              height: 2.h,
+                              height: 4.h,
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
                                   'Review',
-                                  style: whiteTextFont.copyWith(fontSize: Get.height * 0.02, fontWeight: FontWeight.w600),
+                                  style: whiteTextFont.copyWith(fontSize: 14.sp, fontWeight: FontWeight.w600),
                                 ),
                               ],
                             ),
@@ -250,10 +263,10 @@ class _DetailTvViewState extends State<DetailTvView> {
                               color: Colors.white,
                             ),
                             SizedBox(
-                              height: Get.height * 0.02,
+                              height: 2.h,
                             ),
                             Obx(() => reviewController.listReviewMovie.length == 0 && !reviewController.isLoading.value
-                                ? Center(child: Text('Belum ada review', style: whiteTextFont))
+                                ? Center(child: Text('No reviews yet', style: whiteTextFont))
                                 : reviewController.listReviewMovie.length > 0 && !reviewController.isLoading.value
                                     ? Container(
                                         width: Get.width,

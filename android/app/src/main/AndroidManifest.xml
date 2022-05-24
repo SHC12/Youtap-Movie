@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.youtap.movie.youtap_movie">
+     <uses-permission android:name="android.permission.INTERNET"/>
    <application
         android:label="youtap_movie"
         android:name="${applicationName}"
