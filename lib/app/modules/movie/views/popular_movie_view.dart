@@ -44,7 +44,10 @@ class PopularMovieView extends StatelessWidget {
                               poster: movieController.listPopular[index].backdropPath,
                               vote: movieController.listPopular[index].voteAverage.toString(),
                               title: movieController.listPopular[index].title,
-                              onTap: () {},
+                              onTap: () {
+                                movieController.fetchDetailMovie(movieController.listUpcoming[index].id.toString(), isNowPlaying: true);
+                                print(movieController.listUpcoming[index].id);
+                              },
                             ),
                           );
                         }),
